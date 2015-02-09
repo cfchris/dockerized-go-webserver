@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Compile statically linked binary
+CGO_ENABLED=0 go build -o staticbinary -a -installsuffix cgo github.com/cfchris/dockerized-go-webserver
+
+# Copy static files into build path
+cp -r ../wwwroot ./wwwroot
+
+docker build -t go-webserver:static .
+
+# Cleanup
+rm -rf ./wwwroot
+rm ./staticbinary
+
