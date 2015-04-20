@@ -4,13 +4,17 @@ This repository is meant as an example for a developer looking to create a minim
 
 Here's the TLDR:
 
-server.go:
-`http.ListenAndServe(":8080", http.FileServer(http.Dir("/var/www/hello")))`
+server.go: (Serve files located at "/var/www/hello".)
+```
+http.ListenAndServe(":8080", http.FileServer(http.Dir("/var/www/hello")))
+```
 
-build.sh:
-`CGO_ENABLED=0 go build -o staticbinary -a -installsuffix cgo github.com/cfchris/dockerized-go-webserver`
+build.sh: (Compile a non dynamically linked binary.)
+```
+CGO_ENABLED=0 go build -o staticbinary -a -installsuffix cgo github.com/cfchris/dockerized-go-webserver
+```
 
-Dockerfile:
+Dockerfile: (Have Docker copy the static files into the container at "/var/www/hello".)
 ```
 FROM scratch
 
