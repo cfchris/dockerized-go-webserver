@@ -2,11 +2,13 @@
 
 This repository is meant as an example for a developer looking to create a minimal Docker image of a lightweight Go http fileserver.
 
-Here are the interesting parts:
+Here's the TLDR:
 
-hello.go: `http.ListenAndServe(":8080", http.FileServer(http.Dir("/var/www/hello")))`
+server.go:
+`http.ListenAndServe(":8080", http.FileServer(http.Dir("/var/www/hello")))`
 
-build.sh: `CGO_ENABLED=0 go build -o staticbinary -a -installsuffix cgo github.com/cfchris/dockerized-go-webserver`
+build.sh:
+`CGO_ENABLED=0 go build -o staticbinary -a -installsuffix cgo github.com/cfchris/dockerized-go-webserver`
 
 Dockerfile:
 ```
