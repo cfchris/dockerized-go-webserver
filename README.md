@@ -14,7 +14,7 @@ build.sh: (Compile a non dynamically linked binary.)
 CGO_ENABLED=0 go build -o staticbinary -a -installsuffix cgo github.com/cfchris/dockerized-go-webserver
 ```
 
-Dockerfile: (Have Docker copy the static files into the container at "/var/www/hello".)
+Dockerfile: (Have "docker build" copy the static files into the container at "/var/www/hello".)
 ```
 FROM scratch
 
